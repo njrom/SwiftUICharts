@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "SwiftUICharts",
             targets: ["SwiftUICharts"]),
+        .library(
+            name: "PieChart",
+            targets: ["PieChart"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -21,5 +24,8 @@ let package = Package(
         .target(
             name: "SwiftUICharts",
             dependencies: []),
+        .target(
+            name: "PieChart",
+            dependencies: [])
     ]
 )
