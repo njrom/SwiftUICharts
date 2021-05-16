@@ -37,7 +37,7 @@ public struct PieChart: View {
         return slices
     }
     
-    init(_ values: [(Color, Double)]) {
+    public init(_ values: [(Color, Double)]) {
         slices = calculateSlices(from: values)
     }
     
