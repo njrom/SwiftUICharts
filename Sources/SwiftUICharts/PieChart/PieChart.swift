@@ -11,7 +11,7 @@ import SwiftUI
 public struct PieChart: View {
     
     private var slices = [PieSlice]()
-    
+    private var radialOffset: Bool
     private func calculateSlices(from inputValues: [(color: Color, value: Double)]) -> [PieSlice] {
         // 1
         let sumOfAllValues = inputValues.reduce(0) { $0 + $1.value }
@@ -37,8 +37,10 @@ public struct PieChart: View {
         return slices
     }
     
-    public init(_ values: [(Color, Double)]) {
+    public init(_ values: [(Color, Double)], radialOffset: Bool = false) {
+        self.radialOffset = radialOffset
         slices = calculateSlices(from: values)
+        
     }
     
     public var body: some View {
@@ -48,17 +50,20 @@ public struct PieChart: View {
             let radius = min(halfWidth, halfHeight)
             let center = CGPoint(x: halfWidth, y: halfHeight)
             ZStack(alignment: .center) {
+                var count: Int = 0
                 ForEach(slices, id: \.self) { slice in
                     Path { path in
                         path.move(to: center)
                         path.addArc(center: center,
-                                    radius: radius,
+                                    radius: (count % 2 == 0 && radialOffset) ? radius + -10.0 : radius,
                                     startAngle: slice.start,
                                     endAngle: slice.end,
                                     clockwise: false
                         )
+                        count += 1
                     }
                     .fill(slice.color)
+                    
                 }
             }
         }
@@ -78,7 +83,8 @@ private struct PieSlice : Hashable {
 @available(iOS 13.0, macOS 10.15, *)
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        PieChart([(.red, 20),(.blue, 30), (.green, 10), (.orange, 40)])
+        PieChart([(.red, 20),(.blue, 30), (.green, 10), (.orange, 40)], radialOffset: true)
+            .padding(50)
     }
 }
 
