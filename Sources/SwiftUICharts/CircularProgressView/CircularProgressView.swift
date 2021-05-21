@@ -18,13 +18,6 @@ struct ContentView: View {
         let multiple = height/200
         return
         VStack(spacing: 20){
-            // 2.
-            HStack {
-                Text("0%")
-                Slider(value: $progress)
-                Text("100%")
-            }.padding()
-            
             ZStack {
                 // 3.
                 Circle()
