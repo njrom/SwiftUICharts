@@ -23,34 +23,30 @@ public struct CircularProgressView: View {
     public var body: some View {
         let multiple = height/200
         return
-        VStack(spacing: 20){
             ZStack {
                 // 3.
                 Circle()
-                    .stroke(Color.gray, lineWidth: 20*multiple)
+                    .stroke(Color.gray, lineWidth: 40*multiple)
                     .opacity(0.1)
                 // 4.
                 Circle()
                     .trim(from: 0, to: progress)
                     .stroke(style: StrokeStyle(lineCap: .round))
-                    .stroke(accentColor, lineWidth: 20*multiple)
+                    .stroke(accentColor, lineWidth: 40*multiple)
                     .rotationEffect(.degrees(-90))
                 // 5.
                 .overlay(
                     Text("\(Int(progress * 100.0))%"))
-                    .font(.system(size: 35*multiple))
+                    .font(.system(size: 40*multiple))
                      
-            }.padding(20)
-            .frame(height: height)
-            
-            Spacer()
-        }
+            }.padding(20*multiple)
+            .frame(width: height, height: height)
     }
 }
 
 @available(iOS 13.0, macOS 10.15, *)
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(height: 300)
+        CircularProgressView(height: 45)
     }
 }
