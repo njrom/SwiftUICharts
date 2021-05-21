@@ -14,6 +14,12 @@ public struct CircularProgressView: View {
     
     var height: CGFloat = 200.0
     var accentColor = Color.red
+    
+    public init(height: CGFloat? = nil, accentColor: Color? = nil) {
+        self.height = height ?? 200.0
+        self.accentColor = accentColor ?? .red
+    }
+    
     public var body: some View {
         let multiple = height/200
         return
