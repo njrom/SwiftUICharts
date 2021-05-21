@@ -10,14 +10,15 @@ import SwiftUI
 public struct CircularProgressView: View {
     
     
-    @State private var progress: CGFloat = 0.0
+    @Binding private var progress: CGFloat
     
     var height: CGFloat = 200.0
     var accentColor = Color.red
     
-    public init(height: CGFloat? = nil, accentColor: Color? = nil) {
+    public init(height: CGFloat? = nil, accentColor: Color? = nil, progress: Binding<CGFloat>) {
         self.height = height ?? 200.0
         self.accentColor = accentColor ?? .red
+        self._progress = progress
     }
     
     public var body: some View {
@@ -47,6 +48,6 @@ public struct CircularProgressView: View {
 @available(iOS 13.0, macOS 10.15, *)
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(height: 45)
+        CircularProgressView(height: 45, progress: .constant(0.5))
     }
 }
