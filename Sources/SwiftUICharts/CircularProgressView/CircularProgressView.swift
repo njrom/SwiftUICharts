@@ -7,7 +7,7 @@
 
 import SwiftUI
 @available(iOS 13.0, macOS 10.15, *)
-struct ContentView: View {
+struct CircularProgressView: View {
     
     
     @State private var progress: CGFloat = 0.0
@@ -45,6 +45,6 @@ struct ContentView: View {
 @available(iOS 13.0, macOS 10.15, *)
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(height: 300)
+        CircularProgressView(height: 300)
     }
 }
