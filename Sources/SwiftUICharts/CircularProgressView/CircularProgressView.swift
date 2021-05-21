@@ -27,18 +27,18 @@ public struct CircularProgressView: View {
             ZStack {
                 // 3.
                 Circle()
-                    .stroke(Color.gray, lineWidth: 40*multiple)
+                    .stroke(Color.gray, lineWidth: 25*multiple)
                     .opacity(0.1)
                 // 4.
                 Circle()
                     .trim(from: 0, to: progress)
                     .stroke(style: StrokeStyle(lineCap: .round))
-                    .stroke(accentColor, lineWidth: 40*multiple)
+                    .stroke(accentColor, lineWidth: 25*multiple)
                     .rotationEffect(.degrees(-90))
                 // 5.
                 .overlay(
                     Text("\(Int(progress * 100.0))%"))
-                    .font(.system(size: 40*multiple))
+                    .font(.system(size: 50*multiple))
                      
             }.padding(20*multiple)
             .frame(width: height, height: height)
@@ -48,6 +48,6 @@ public struct CircularProgressView: View {
 @available(iOS 13.0, macOS 10.15, *)
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        CircularProgressView(height: 45, progress: .constant(0.5))
+        CircularProgressView(height: 40, progress: .constant(0.5))
     }
 }
