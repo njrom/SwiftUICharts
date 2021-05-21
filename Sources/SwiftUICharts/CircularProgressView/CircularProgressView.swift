@@ -7,14 +7,14 @@
 
 import SwiftUI
 @available(iOS 13.0, macOS 10.15, *)
-struct CircularProgressView: View {
+public struct CircularProgressView: View {
     
     
     @State private var progress: CGFloat = 0.0
     
     var height: CGFloat = 200.0
     var accentColor = Color.red
-    var body: some View {
+    public var body: some View {
         let multiple = height/200
         return
         VStack(spacing: 20){
